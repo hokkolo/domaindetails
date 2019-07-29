@@ -1,23 +1,31 @@
 #!/bin/bash
-
+#AUTHOR=Gautham
+#VERSION=29072019
+#List menu function
+#Colourcode
+NONE=`tput sgr0`
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+GREEN=`tput setaf 2`
 function MENU(){
-	echo "1. List the Domain Details"
-	echo "2. List Subdomains"
-	echo "3. Exit"
-        read -p "Enter your choice: " VAL
+	echo "${RED}1. List the Domain Details${NONE}"
+	echo "${RED}2. List Subdomains${NONE}"
+	echo "${RED}3. Exit${NONE}"
+	read -p "${YELLOW}Enter your choice:${NONE} " VAL
 	case "$VAL" in
-		1) echo "Listing the Domain details"
+		1) echo "${GREEN}Listing the Domain details${NONE}"
 			DOMAINCHECK
 			;;
-		2) echo "Listing Subdomains"
+		2) echo "${GREEN}Listing Subdomains${NONE}"
 			SUBDOMAINS
 			;;
 		3)exit
 			;;
 	esac
-
 }
 
+#Function to list the domain details
 function DOMAINCHECK(){
 
 	IP=`dig @8.8.8.8 $DOMAIN +short`
@@ -27,7 +35,7 @@ function DOMAINCHECK(){
 	if [ $(whois $DOMAIN | grep Expiry | awk '{print $4}') ];then 
 		EXP=`whois $DOMAIN | grep Expiry | awk '{print $4}'`
 	else 
-		EXP="Domain Expiry not found"
+		EXP="${RED}Domain Expiry not found${NONE}"
 	fi
 	echo "IP Address: " 
 	for i in $IP;do
@@ -45,6 +53,8 @@ function DOMAINCHECK(){
 	echo "Domain Expiry: " $EXP
 	MENU
 }
+
+#Function to list subdomains
 function SUBDOMAINS(){
 	URL=https://api.hackertarget.com/hostsearch/?q=
 	SUB=`curl $URL$DOMAIN`
@@ -54,12 +64,11 @@ function SUBDOMAINS(){
 	MENU
 }
 
-
+#Main function
 read -p "Enter the domains name: " DOMAIN
 if [ $(dig @8.8.8.8 $DOMAIN +short) ];then
 	MENU
 else
-	echo "Domain does not exist in Google Records...!!!!!"
+	echo "${RED}Domain does not exist in Google Records...!!!!!${NONE}"
 	exit
-
 fi	
