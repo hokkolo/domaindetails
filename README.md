@@ -1,6 +1,17 @@
-About
------
-This is a shell script to list the domain details:-
+# Description
+
+Simple bash script that facilitates Reconnaissance.
+
+## Howtos
+
+> Clone the repo
+
+> Give executable permmision 
+
+> Run the script
+
+## Functionalities added
+
 1. IP
 2. Host Server
 3. Mail server
