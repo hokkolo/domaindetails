@@ -18,3 +18,6 @@ Simple bash script that facilitates Reconnaissance.
 4. Nameserver
 5. Existence of a Domain
 6. All the sub-domains under the Domain 
+
+## License
+BSD
