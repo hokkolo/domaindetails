@@ -37,20 +37,28 @@ function DOMAINCHECK(){
 	else 
 		EXP="${RED}Domain Expiry not found${NONE}"
 	fi
-	echo "IP Address: " 
+	echo "IP Address: "
+        echo "-------------"	
 	for i in $IP;do
 		echo $i
 	done
+	 echo "-------------"
 	echo "Nameservers: " 
+	 echo "-------------"
 	for i in $NS;do
 		echo $i
 	done
-	echo "Mail Servers: " 
+	 echo "-------------"
+	echo "Mail Servers: "
+        echo "-------------"	
 	for i in $MX;do
 		echo $i
 	done
+	 echo "-------------"
 	echo "Host Server: "$PTR
+	 echo "-------------"
 	echo "Domain Expiry: " $EXP
+	 echo "-------------"
 	MENU
 }
 

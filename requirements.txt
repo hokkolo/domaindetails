@@ -1,0 +1,7 @@
+Debian
+1. whois
+2. dnsutils
+
+RPM-based
+1. whois
+2. bind-utils
