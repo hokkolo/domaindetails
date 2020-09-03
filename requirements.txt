@@ -1,3 +1,5 @@
+Following packages should be installed for this script to work effectively
+==========================================================================
 Debian
 1. whois
 2. dnsutils
